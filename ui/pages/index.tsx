@@ -17,8 +17,8 @@ interface User {
   exp: number;
 }
 
-const Home: NextPage = ({ fallbackData }) => {
-  const { data } = useSwr<User>(
+const Home: NextPage<{ fallbackData: User }> = ({ fallbackData }) => {
+  const { data } = useSwr<User | null>(
     `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/api/me`,
     fetcher,
     { fallbackData }
